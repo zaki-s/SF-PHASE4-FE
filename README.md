@@ -1,12 +1,18 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+hello, zaki here.
+so when you pull this from the repo, dont create another vite project as there'll be duplicates and also well be bound to have severe conflicts.
 
-## Expanding the ESLint configuration
+Also for the styles each individual feature style should be in the style folder. so the linking of the styles will like so  "  ../src/styles/feat.css ",
+This will reduce cluttered files all over the folder
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+If at any point you create a folder reach out to your teammates to let them know.
+
+So work with the skeleton thats there so that merging will be smooth and even then, conflicts will be much easier to resolve!
+
+The prog.txt is the dependencies there so when you add another dependencie feel free to put in the command
+" pip freeze > prog.txt"
+so that when you push your work we can install all of them right from that prog.txt file.
+
+God-speed coding guys!!
