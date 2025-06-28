@@ -1,13 +1,16 @@
 
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from "./pages/HomePage.jsx";
 
 function App() {
   return (
-    <div>
-      <h1>Welcome to Skill Forge</h1>
-      <p>Your journey to mastering skills starts here!</p>
-    </div>
-  );  
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </Router>
+  )
 }
 
 export default App;
