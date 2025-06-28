@@ -306,7 +306,7 @@
     flex-shrink: 0;
 }
 
-/* removing unwanted styles!!*/
+/* removing unwanted styles*/
 .dropdown-menu ul li img:hover {
     background: none;
     filter: none;
