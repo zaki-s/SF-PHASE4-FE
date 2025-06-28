@@ -237,4 +237,85 @@
     cursor: pointer;
 }
 
+/*drop down menu*/
+.dropdown-menu {
+    position: absolute;
+    top: 86px;
+    right: 20px;
+    background-color: #111827;
+    border: 1px solid #1F2937;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 15px;
+    width: 14rem;
+}
 
+.dropdown-header {
+    background-color: #111827;
+    padding: 10px;
+    border-bottom: 1px solid #1F2937;
+}
+
+.username {
+    background-color: #111827;
+    margin: 0;
+    font-weight: bold;
+    color: #dbdbdb;
+}
+
+
+.dropdown-menu ul {
+    background-color: #111827;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-menu li {
+    background-color: #111827;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.dropdown-menu li:hover {
+}
+
+.logout {
+    border-top: 1px solid #1F2937;
+}
+
+.dropdown-menu ul li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    gap: 10px; 
+}
+
+.dropdown-menu ul li:hover {
+    background-color: #1F2937;
+    border-radius: 6px;
+}
+
+.dropdown-menu ul li img {
+    align-items: center;
+    width: 14px;
+    height: 14px;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+/* Remove hover effect from icons specifically */
+.dropdown-menu ul li img:hover {
+    background: none;
+    filter: none;
+    color: inherit;
+}
+
+.logout-icon:hover {
+    background: none;
+    filter: none;
+    color: white
+}

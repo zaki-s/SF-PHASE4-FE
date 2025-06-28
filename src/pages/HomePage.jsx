@@ -5,9 +5,12 @@ import '../styles/HomePage.css';
 import userIcon from '../assets/user.svg';
 import instagramIcon from '../assets/instagram.svg';
 import twitterIcon from '../assets/twitter.svg';
+import profileIcon from '../assets/profile.svg'
+import settingsIcon from '../assets/settings.svg';
+import logoutIcon from '../assets/logout.svg'
 
 const HomePage = () => {
-    const [scrolled, setScrolled] = useState(false);
+    const [scrolled, setScrolled] = useState(false); //this is for the sticky navbar but ill do it later (the styling that is)
 
     useEffect(() => {
         const handleScroll = () => {
@@ -17,6 +20,15 @@ const HomePage = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const [showDropdown, setShowDropdown] = useState(false);
+
+    const toggleDropdown = () => {
+        setShowDropdown(prev => !prev);
+    };
+
+    const closeDropdown = () => {
+        setShowDropdown(false);
+    };
 
     console.log("im running");
 
@@ -33,8 +45,31 @@ const HomePage = () => {
                         <li>FAQ's</li>
                     </ul>
                 </div>
-                <div className="profile">
+                <div className="profile" onClick={toggleDropdown} onBlur={closeDropdown} tabIndex="0">
                     <img src={userIcon} alt="User Icon" width={32} className="profileicon" />
+                    {showDropdown && (
+                        <div className="dropdown-menu">
+                            <div className="dropdown-header">
+                                <p className="username">Anonymous</p>
+                            </div>
+                            <ul>
+                                <li>
+                                    <img src={profileIcon} alt="Profile Icon" width={10} className="profile-icon" />
+                                    My Profile
+                                </li>
+
+                                <li>
+                                    <img src={settingsIcon} alt="Settings Icon" width={10} className="settings-icon" />
+                                    Settings
+                                </li>
+
+                                <li className="logout">
+                                    <img src={logoutIcon} alt="Logout Icon" width={10} className="logout-icon" />
+                                    Logout
+                                </li>
+                            </ul>
+                        </div>
+                    )}
                 </div>
             </div>
 
