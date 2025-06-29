@@ -118,4 +118,4 @@ const StepForm: React.FC<StepFormProps> = ({
   );
 };
 
-export default StepForm; 
+export default StepForm;
