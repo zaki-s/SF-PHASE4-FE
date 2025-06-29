@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import LoginForm from './LoginForm';
 import ResetPassword from './ResetPassword';
-import { Eye, EyeOff } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Eye, EyeOff, X } from 'lucide-react';
 import './Register.css'; // Assuming you have a CSS file for styling
 
-const RegisterForm = ({ onSwitchToLogin }) => {
+const RegisterForm = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -22,16 +23,39 @@ const RegisterForm = ({ onSwitchToLogin }) => {
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData);
-        // Add form submission logic here
+        console.log(formData); // still useful for debugging
+
+        try {
+            const res = await fetch('http://localhost:5000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                alert('✅ REGISTER USER successful');
+                // optionally redirect or store token
+            } else {
+                alert(`❌ ${data.error}`);
+            }
+        } catch {
+            alert('❌ Network error. Please check your connection.');
+        }
     };
+    
 
     return (
         <div className="register-container">
             <form className="register-form" onSubmit={handleSubmit}>
+                
                 <h2>Register</h2>
+                <X className="close-icon"  />
                 <label>
                     Name
                     <input type="text" name="name" value={formData.name} onChange={handleChange} required />
@@ -42,42 +66,44 @@ const RegisterForm = ({ onSwitchToLogin }) => {
                 </label>
                 <label>
                     Password
-                    <input 
-                        type={showPassword ? 'text' : 'password'}
-                    onClick={() => setShowPassword(!showPassword)}
-                    name="password" 
-                    value={formData.password} onChange={handleChange} required />
-                    <span className="icon" onClick={togglePassword}>
-                        {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                    </span> 
-                    
+                    <div className="password-input-wrapper">
+                        <input
+                            type={showPassword ? 'text' : 'password'}
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                        />
+                        <span className="icon" onClick={togglePassword}>
+                            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                        </span>
+                    </div>
                 </label>
                 <label>
                     Confirm Password
+                    <div className="password-input-wrapper">   
                     <input
-                        type="password"
-                        name="confirmPassword"
-                        value={formData.confirmPassword}
+                            type={showPassword ? 'text' : 'password'}
+                            name="confirmPassword"
+                        value={formData.Password}
                         onChange={handleChange}
                         required
                     />
                     <span className="icon" onClick={togglePassword}>
                         {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                     </span>
-
+                    </div>
                 </label>
                 <button type="submit">Register</button>
                 <p className="switch-link">
                     Already have an account?{' '}
-                    <a href='./LoginForm' onClick={(e) => { e.preventDefault(); onSwitchToLogin(); }}>
-                        Login
-                    </a>
+                    <Link to="/login">Login</Link>
+
                 </p>
                 <p className="switch-link">
-                    {' '}
-                    <a href='resetPassword' onClick={(e) => { e.preventDefault(); onSwitchToLogin(); }}>
-                        Reset Password
-                    </a>
+                   Forgot {' '}
+                    <Link to="/reset">RESET Password</Link>
+
                 </p>
 
             </form>

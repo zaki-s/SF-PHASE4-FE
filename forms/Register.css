@@ -60,6 +60,29 @@
     cursor: pointer;
     color: #555;
   }
+  .password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .password-input-wrapper input {
+    width: 100%;
+    padding: 0.5rem 2.5rem 0.5rem 0.75rem; /* space for icon on right */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .password-input-wrapper .icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #555;
+  }
   .close-icon {
     position: absolute;
     top: 12px;
@@ -70,11 +93,7 @@
   }
   
   .close-icon:hover {
-    color: #000;
-  }
-  .error {
     color: red;
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-  }  
+  }
+  
   

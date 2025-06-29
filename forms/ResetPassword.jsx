@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { X } from 'lucide-react'; // Assuming you have lucide-react installed for icons
 import './ResetPassword.css';
 
-const ResetPassword = ({ onSwitchToLogin }) => {
+const ResetPassword = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
@@ -29,7 +30,7 @@ const ResetPassword = ({ onSwitchToLogin }) => {
 
     return (
         <div className="reset-password-container">
-            <X className="close-icon" />
+            <X className="close-icon" onClick={() => window.history.back()} />
 
             <h2>Reset Password</h2>
             <form onSubmit={handleSubmit}>
@@ -49,9 +50,8 @@ const ResetPassword = ({ onSwitchToLogin }) => {
 
             <p className="switch-link">
                 Remember your password?{' '}
-                <a href="#" onClick={(e) => { e.preventDefault(); onSwitchToLogin(); }}>
-                    Login
-                </a>
+                <Link to="/login">Login</Link>
+
             </p>
         </div>
     );
