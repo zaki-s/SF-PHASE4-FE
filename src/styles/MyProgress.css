@@ -1,0 +1,77 @@
+
+.progresspage {
+    margin: 0;
+    color: #cac8c8;
+    overflow: hidden;
+}
+
+.progress-content {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    font-size: 3rem;
+    margin-top: 40px;
+    color: #e2e2e2;
+}
+
+h3 {
+    font-size: 1.5rem;
+    background-color: #040a1a;
+}
+
+.goal-card, .journey-card {
+    border: 1px solid #1F2937;
+    background-color: #040a1a;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 16px 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.goal-title {
+    background-color: #040a1a;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.progress-bar-container {
+    background-color: #c9c9c9;
+    border-radius: 8px;
+    height: 10px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-label {
+    background-color: #040a1a;
+    font-size: 0.85rem;
+    color: #796e6e;
+}
+
+.journey-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+
+.progress-bar {
+  height: 100%;
+  transition: width 0.3s ease-in-out;
+  border-radius: 8px;
+}
+
+.progress-bar.low {
+  background: linear-gradient(to right, #f44336, #e57373); /* red */
+}
+
+.progress-bar.medium {
+  background: linear-gradient(to right, #ff9800, #ffb74d); /* orange */
+}
+
+.progress-bar.high {
+  background: linear-gradient(to right, #4caf50, #81c784); /* green */
+}
