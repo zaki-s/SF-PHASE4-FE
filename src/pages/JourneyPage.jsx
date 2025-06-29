@@ -4,6 +4,8 @@ import userIcon from '../assets/user.svg';
 import profileIcon from '../assets/profile.svg';
 import settingsIcon from '../assets/settings.svg';
 import logoutIcon from '../assets/logout.svg';
+import editIcon from '../assets/edit.svg';
+import deleteIcon from '../assets/delete.svg';
 
 const JourneyPage = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -77,7 +79,19 @@ const JourneyPage = () => {
 
                     <div className="journeycard">
                         <div className="card">
-                            <h2 className="card-title">React Basics</h2>
+                            <div className="cardtop">
+                                <h2 className="card-title">React Basics</h2> 
+                                <div className="cardicons">
+                                    <ul>
+                                        <li>
+                                            <img src={editIcon} alt="Edit Icon" width={20} className="cardicons2" /> 
+                                        </li>
+                                        <li>
+                                            <img src={deleteIcon} alt="Delete Icon" width={20} className="cardicons2" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                             <ul className="step-list">
                                 <li><input type="checkbox" /> JSX & Components</li>
                                 <li><input type="checkbox" /> Props & State</li>
@@ -87,7 +101,19 @@ const JourneyPage = () => {
                         </div>
 
                         <div className="card">
-                            <h2 className="card-title">CSS Mastery</h2>
+                            <div className="cardtop">
+                                <h2 className="card-title">CSS Mastery</h2>
+                                <div className="cardicons">
+                                    <ul>
+                                        <li>
+                                            <img src={editIcon} alt="Edit Icon" width={20} className="cardicons2" /> 
+                                        </li>
+                                        <li>
+                                            <img src={deleteIcon} alt="Delete Icon" width={20} className="cardicons2" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                             <ul className="step-list">
                                 <li><input type="checkbox" /> Flexbox</li>
                                 <li><input type="checkbox" /> Grid</li>
@@ -97,7 +123,19 @@ const JourneyPage = () => {
                         </div>
 
                         <div className="card">
-                            <h2 className="card-title">JavaScript Essentials</h2>
+                            <div className="cardtop">
+                                <h2 className="card-title">JavaScript Essentials</h2>
+                                <div className="cardicons">
+                                    <ul>
+                                        <li>
+                                            <img src={editIcon} alt="Edit Icon" width={20} className="cardicons2" /> 
+                                        </li>
+                                        <li>
+                                            <img src={deleteIcon} alt="Delete Icon" width={20} className="cardicons2" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                             <ul className="step-list">
                                 <li><input type="checkbox" /> Variables & Types</li>
                                 <li><input type="checkbox" /> Functions</li>

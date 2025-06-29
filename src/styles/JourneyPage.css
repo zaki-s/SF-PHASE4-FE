@@ -66,6 +66,7 @@
 }
  
 .card-title {
+    margin-top: 0.2rem;
     background-color: #040a1a;
 }
 
@@ -84,10 +85,39 @@
 }
 
 .card-title {
+    text-align: center;
+    background-color: #040a1a;
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: #e7e7e7;
 }
+
+.cardtop {
+    background-color: #040a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.cardicons ul {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cardicons2 {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.cardicons2:hover {
+    opacity: 1;
+}
+
 
 .step-list {
     background-color: #040a1a;
@@ -123,3 +153,4 @@
     box-shadow: 0 0 10px 3px rgba(149, 126, 185, 0.6);
     color: #4f46e5
 }
+
