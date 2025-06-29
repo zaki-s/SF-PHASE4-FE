@@ -41,8 +41,6 @@ const HomePage = () => {
                         <li>Journey</li>
                         <li>My Progress</li>
                         <li>Milestones</li>
-                        <li>Contacts</li>
-                        <li>FAQ's</li>
                     </ul>
                 </div>
                 <div className="profile" onClick={toggleDropdown} onBlur={closeDropdown} tabIndex="0">
