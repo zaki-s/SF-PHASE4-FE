@@ -77,7 +77,11 @@ const HomePage = () => {
                 <h1 className="hero-title gradient-text">Track Your Journey</h1>
                 <p>Make your skill learning manageable with our user frinedly skill/journey tracking platform.</p>
                 <p>Set goals, track progress, celebrate milestones and unlock your potential across all skills and BEYOND!</p>
-                <button className="startbtn">Start a Journey</button>
+                <button className="startbtn">
+                    <Link to="/journey" className="startbtn">
+                        Start a Journey
+                    </Link>
+                </button>
             </div>
 
                 <div className="features">
