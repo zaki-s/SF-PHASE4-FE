@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Journey } from '../../types';
 import { apiService } from '../../services/api';
-import StepList from './StepList';
 import JourneyForm from '../Forms/JourneyForm';
 import StepForm from '../Forms/StepForm';
 import { ArrowLeft, Edit2, Trash2, Plus, BookOpen, Calendar, MoreVertical } from 'lucide-react';
