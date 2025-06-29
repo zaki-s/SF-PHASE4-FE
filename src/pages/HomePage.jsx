@@ -8,6 +8,7 @@ import twitterIcon from '../assets/twitter.svg';
 import profileIcon from '../assets/profile.svg'
 import settingsIcon from '../assets/settings.svg';
 import logoutIcon from '../assets/logout.svg'
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
     const [scrolled, setScrolled] = useState(false); //this is for the sticky navbar but ill do it later (the styling that is)
@@ -35,11 +36,11 @@ const HomePage = () => {
     return (
         <div className="Homepage">
             <div className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
-                <h1 classname="logo">SF</h1>
+                <h1 classname="logo"><Link to="/" className="logo">SF</Link></h1>
                 <div className="navlinks">
                     <ul className="navlist">
-                        <li>Journey</li>
-                        <li>My Progress</li>
+                        <li><Link to="/journey">Journey</Link></li>
+                        <li><Link to="/progress">My Progress</Link></li>
                         <li>Milestones</li>
                     </ul>
                 </div>

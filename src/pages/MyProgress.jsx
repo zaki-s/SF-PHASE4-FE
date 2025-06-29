@@ -4,6 +4,7 @@ import userIcon from '../assets/user.svg';
 import profileIcon from '../assets/profile.svg';
 import settingsIcon from '../assets/settings.svg';
 import logoutIcon from '../assets/logout.svg';
+import { Link } from 'react-router-dom'
 
 const MyProgress = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -21,9 +22,9 @@ const MyProgress = () => {
   return (
     <div className="progresspage">
       <div className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
-        <h1 className="logo">SF</h1>
+        <h1 className="logo"><Link to="/" className="logo">SF</Link></h1>
         <ul className="navlist">
-          <li>Journey</li>
+          <li><Link to="/journey">Journey</Link></li>
           <li className="active">My Progress</li>
           <li>Milestones</li>
         </ul>

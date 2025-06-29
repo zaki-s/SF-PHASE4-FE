@@ -15,4 +15,7 @@ The prog.txt is the dependencies there so when you add another dependencie feel 
 " pip freeze > prog.txt"
 so that when you push your work we can install all of them right from that prog.txt file.
 
+17:37pm  
+Okay im going to work link everything together through navbar
+
 God-speed coding guys!!
