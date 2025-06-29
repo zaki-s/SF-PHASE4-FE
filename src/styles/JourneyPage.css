@@ -237,6 +237,10 @@
     margin-bottom: 0.3rem;
 }
 
+.modal-body p {
+    background-color: #040a1a;
+}
+
 .modal-input,
 .modal-textarea {
     border: 1px solid #1F2937;
@@ -325,4 +329,29 @@
     font-size: 0.85rem;
     color: #666;
     margin-bottom: 0.5rem;
+}
+
+.warn {
+    background-color: #040a1a;
+    color: #bb0202;
+}
+
+.delete-button {
+    margin-top: 1.5rem;
+    padding: 0.5rem  1.2rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: 550;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    background: #b80000;
+    color: white;
+}
+
+.delete-button:hover {
+    color: #ffffff;
+    background: #ff0000;
+    transform: scale(1.05);
+    box-shadow: 0 0 12px 4px rgba(223, 103, 103, 0.342);
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }

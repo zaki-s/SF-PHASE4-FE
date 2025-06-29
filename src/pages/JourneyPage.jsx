@@ -283,11 +283,11 @@ const JourneyPage = () => {
               <button className="close-button" onClick={cancelDelete}>×</button>
             </div>
             <div className="modal-body">
-              <p>Are you sure you want to delete this journey?</p>
+              <p>Are you sure you want to <span className="warn" >delete</span> this journey?</p>
             </div>
             <div className="modal-actions">
               <button className="cancel-button" onClick={cancelDelete}>Cancel</button>
-              <button className="submit-button" onClick={handleDelete}>Delete</button>
+              <button className="delete-button" onClick={handleDelete}>Delete</button>
             </div>
           </div>
         </div>
