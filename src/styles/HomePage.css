@@ -126,36 +126,36 @@ a {
 /*detail cards*/
 
 .features {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  padding: 2rem 2rem 0.5rem 2rem;
-  flex-wrap: wrap;
-  margin-top: 4rem;
-  cursor: pointer;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem 2rem 0.5rem 2rem;
+    flex-wrap: wrap;
+    margin-top: 4rem;
+    cursor: pointer;
 }
 
 .feature-card {
-  background-color: #040a1a;
-  border-radius: 1rem;
-  border: 1px solid #1F2937;
-  padding: 2rem 2rem 0.5rem 2rem;
-  width: 260px;
-  height: 300px;
-  text-align: center;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  transition: transform 0.3s ease;
+    background-color: #040a1a;
+    border-radius: 1rem;
+    border: 1px solid #1F2937;
+    padding: 2rem 2rem 0.5rem 2rem;
+    width: 260px;
+    height: 300px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease;
 }
 
 .feature-card:hover {
-  transform: translateY(-6px);
+    transform: translateY(-6px);
 }
 
 .feature-title {
-  background-color: #040a1a;
-  font-size: 1.7rem;
-  color: #0a8df8;
-  margin-bottom: 0.5rem;
+    background-color: #040a1a;
+    font-size: 1.7rem;
+    color: #0a8df8;
+    margin-bottom: 0.5rem;
 }
 
 .feature-description {
@@ -259,6 +259,7 @@ a {
     top: 86px;
     right: 20px;
     background-color: #111827;
+    pointer-events: all;
     border: 1px solid #1F2937;
     border-radius: 6px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
