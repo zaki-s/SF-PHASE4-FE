@@ -55,7 +55,6 @@ const ProfilePage = () => {
 
   return (
     <div className="profile-wrapper">
-      {/* Navbar */}
       <div className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
         <h1 className="logo">
           <Link to="/" className="logo">SF</Link>
@@ -74,17 +73,15 @@ const ProfilePage = () => {
                 <p className="username">Anonymous</p>
               </div>
               <ul>
-                <li>
-                  <Link to="/profile" className="dropdown-link" onClick={closeDropdown}>
-                    <img src={profileIcon} alt="Profile Icon" width={10} className="profile-icon" />
-                    My Profile
-                  </Link>
+                <li onClick={() => window.location.href = '/profile'}>
+                  <img src={profileIcon} alt="Profile Icon" width={10} className="profile-icon" />
+                  My Profile
                 </li>
-                <li>
+                <li onClick={() => window.location.href = '/settings'}>
                   <img src={settingsIcon} alt="Settings Icon" width={10} className="settings-icon" />
                   Settings
                 </li>
-                <li className="logout">
+                <li className="logout" onClick={() => window.location.href = '/logout'}>
                   <img src={logoutIcon} alt="Logout Icon" width={10} className="logout-icon" />
                   Logout
                 </li>
@@ -94,13 +91,11 @@ const ProfilePage = () => {
         </div>
       </div>
 
-      {/* Page Heading */}
       <div className="profile-heading">
         <h1>My Profile</h1>
         <p className="subtext">View and edit your profile information</p>
       </div>
 
-      {/* Profile Card */}
       <div className="profile-card">
         <div className="profile-header">
           <h2>Profile Information</h2>
