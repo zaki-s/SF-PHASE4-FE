@@ -41,7 +41,7 @@ const Settings = () => {
                     />
                 </label>
 
-                <label>
+                <label className="emainput">
                     Email Address
                     <input
                         type="email"

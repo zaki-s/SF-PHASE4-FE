@@ -3,18 +3,20 @@
     margin: 3rem auto;
     padding: 2rem;
     border-radius: 12px;
-    background-color: wheat; /* transparent background */
-      border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #040a1a;
+    border: 1px solid #1F2937;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   }
   
-  .settings-container h2 {
+.settings-container h2 {
+    background-color: #040a1a;
     text-align: center;
     margin-bottom: 1.8rem;
-    color: #1677ff;
-    font-size: 1.6rem;
+    color: #ffffff;
+    font-size: 2.5rem;
     font-weight: 600;
-  }
+    margin-top: 0rem;
+}
   
   .settings-form {
     display: flex;
@@ -23,6 +25,7 @@
     background-color: transparent;
   }
   .settings-form label {
+    color: white;
     font-weight: 500;
     font-size: 0.95rem;
     background-color: transparent;
@@ -33,16 +36,17 @@
   .settings-form input[type="text"],
   .settings-form input[type="email"],
   .settings-form input[type="password"] {
+    margin-left: 10rem;
+    color: rgb(197, 197, 197);
     padding: 0.65rem;
     margin-top: 0.4rem;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #040a1a;
     font-size: 1rem;
-    color: #333;
     transition: border 0.3s;
   }
-  
+
   .settings-form input:focus {
     outline: none;
     border-color: #1677ff;
