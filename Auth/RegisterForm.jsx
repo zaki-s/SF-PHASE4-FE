@@ -48,14 +48,16 @@ const RegisterForm = () => {
             alert('❌ Network error. Please check your connection.');
         }
     };
-    
+    const goHome = () => {
+        window.location.href = '/';
+    };
 
     return (
         <div className="register-container">
             <form className="register-form" onSubmit={handleSubmit}>
                 
-                <h2>Register</h2>
-                <X className="close-icon"  />
+                <h2 className='resw'>Register</h2>
+                <X className="close-icon" onClick={goHome} />
                 <label>
                     Name
                     <input type="text" name="name" value={formData.name} onChange={handleChange} required />
@@ -68,6 +70,7 @@ const RegisterForm = () => {
                     Password
                     <div className="password-input-wrapper">
                         <input
+
                             type={showPassword ? 'text' : 'password'}
                             name="password"
                             value={formData.password}
@@ -79,7 +82,7 @@ const RegisterForm = () => {
                         </span>
                     </div>
                 </label>
-                <label>
+                <label className='poyt'>
                     Confirm Password
                     <div className="password-input-wrapper">   
                     <input
@@ -90,19 +93,19 @@ const RegisterForm = () => {
                         required
                     />
                     <span className="icon" onClick={togglePassword}>
-                        {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                        {showPassword ? <EyeOff size={20}  /> : <Eye size={20} />}
                     </span>
                     </div>
                 </label>
-                <button type="submit">Register</button>
+                <button type="submit" >Register</button>
                 <p className="switch-link">
                     Already have an account?{' '}
-                    <Link to="/login">Login</Link>
+                    <Link to="/login" className='switch-link'>Login</Link>
 
                 </p>
                 <p className="switch-link">
                    Forgot {' '}
-                    <Link to="/reset">RESET Password</Link>
+                    <Link to="/reset" className='switch-link'>RESET Password</Link>
 
                 </p>
 

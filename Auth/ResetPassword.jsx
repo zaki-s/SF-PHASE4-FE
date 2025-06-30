@@ -32,14 +32,15 @@ const ResetPassword = () => {
         <div className="reset-password-container">
             <X className="close-icon" onClick={() => window.history.back()} />
 
-            <h2>Reset Password</h2>
-            <form onSubmit={handleSubmit}>
-                <label>Email Address</label>
+            <h2 className='swilkj'>Reset Password</h2>
+            <form onSubmit={handleSubmit} className='swilkj'>
+                <label className='swilkj'>Email Address</label>
                 <input
                     type="email"
                     placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    className='swilkju'
                 />
 
                 {error && <p className="error">{error}</p>}
@@ -50,7 +51,7 @@ const ResetPassword = () => {
 
             <p className="switch-link">
                 Remember your password?{' '}
-                <Link to="/login">Login</Link>
+                <Link to="/login" className='switch-link'>Login</Link>
 
             </p>
         </div>
