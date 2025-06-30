@@ -2,7 +2,7 @@
   max-width: 400px;
   padding: 2rem;
   text-align: center;
-  background: wheat;
+  background-color: #081129;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 
@@ -14,6 +14,7 @@
 }
 
 .logout-container h2 {
+  background-color: #081129;
   margin-bottom: 1.5rem;
   font-weight: 500;
 }
@@ -24,24 +25,29 @@
   justify-content: center;
   gap: 8px;
 
-  padding: 0.75rem 1.5rem;
-  background-color: wheat;
-  color: black;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    margin-top: 1.5rem;
+    padding: 0.75rem  1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: 550;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    background: #b80000;
+    color: white;
 }
 .wers {
   margin-bottom: 1.5rem;
   font-weight: 500;
-  color: #333;
+  color: #ffe0e0;
   background-color: wheat;
 }
 .logout-button:hover {
-  background-color: #c82333;
-  color: white;
+   color: #ffffff;
+    background: #ff0000;
+    transform: scale(1.05);
+    box-shadow: 0 0 12px 4px rgba(223, 103, 103, 0.342);
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .logout-button svg {
