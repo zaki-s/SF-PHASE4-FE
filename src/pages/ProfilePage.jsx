@@ -64,7 +64,6 @@ const ProfilePage = () => {
           <ul className="navlist">
             <li><Link to="/journey">Journey</Link></li>
             <li><Link to="/progress">My Progress</Link></li>
-            <li>Milestones</li>
           </ul>
         </div>
         <div className="profile" onClick={toggleDropdown} onBlur={closeDropdown} tabIndex="0">

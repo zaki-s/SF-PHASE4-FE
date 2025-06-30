@@ -131,12 +131,13 @@ const JourneyPage = () => {
   return (
     <div className="Journeypage">
       <div className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
-        <h1 className="logo"><Link to="/" className="logo">SF</Link></h1>
+        <h1 className="logo">
+          <Link to="/" className="logo">SF</Link>
+        </h1>
         <div className="navlinks">
           <ul className="navlist">
-            <li>Journey</li>
+            <li><Link to="/journey">Journey</Link></li>
             <li><Link to="/progress">My Progress</Link></li>
-            <li>Milestones</li>
           </ul>
         </div>
         <div className="profile" onClick={toggleDropdown} onBlur={closeDropdown} tabIndex="0">
@@ -145,9 +146,15 @@ const JourneyPage = () => {
             <div className="dropdown-menu">
               <div className="dropdown-header"><p className="username">Anonymous</p></div>
               <ul>
-                <li><img src={profileIcon} alt="Profile Icon" width={10} /> My Profile</li>
-                <li><img src={settingsIcon} alt="Settings Icon" width={10} /> Settings</li>
-                <li className="logout"><img src={logoutIcon} alt="Logout Icon" width={10} /> Logout</li>
+                <li onClick={() => window.location.href = '/profile'}>
+                  <img src={profileIcon} alt="Profile Icon" width={10} /> My Profile
+                </li>
+                <li onClick={() => window.location.href = '/settings'}>
+                  <img src={settingsIcon} alt="Settings Icon" width={10} /> Settings
+                </li>
+                <li className="logout" onClick={() => window.location.href = '/logout'}>
+                  <img src={logoutIcon} alt="Logout Icon" width={10} /> Logout
+                </li>
               </ul>
             </div>
           )}
@@ -297,4 +304,3 @@ const JourneyPage = () => {
 };
 
 export default JourneyPage;
-

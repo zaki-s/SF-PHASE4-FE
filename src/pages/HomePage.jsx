@@ -29,7 +29,7 @@ const HomePage = () => {
     const closeDropdown = () => {
         setShowDropdown(false);
     };
-    const Profilfunction = () => {
+    const profile = () => {
         window.location.href = '/profile';
     };
     const setbnt = () => {
@@ -47,7 +47,6 @@ const HomePage = () => {
                     <ul className="navlist">
                         <li><Link to="/journey">Journey</Link></li>
                         <li><Link to="/progress">My Progress</Link></li>
-                        <li>Milestones</li>
                     </ul>
                 </div>
                 <div className="profile" onClick={toggleDropdown} onBlur={closeDropdown} tabIndex="0">
@@ -58,11 +57,9 @@ const HomePage = () => {
                                 <p className="username">Anonymous</p>
                             </div>
                             <ul>
-                                <li onClick={Profilfunction}>
-                                    <Link to="/profile" className="dropdown-link" onClick={closeDropdown}>
-                                        <img src={profileIcon} alt="Profile Icon" width={10} className="profile-icon" />
-                                        My Profile
-                                    </Link>
+                                <li onClick={profile}>
+                                    <img src={profileIcon} alt="Profile Icon" width={10} className="profile-icon" />
+                                    My Profile
                                 </li>
                                 <li onClick={setbnt}>
                                     <img src={settingsIcon} alt="Settings Icon" width={10} className="settings-icon" />

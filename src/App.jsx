@@ -26,8 +26,6 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/reset" element={<ResetPassword />} />
-
-        {/* Add more routes as needed */}
       </Routes>
     </Router>
   )

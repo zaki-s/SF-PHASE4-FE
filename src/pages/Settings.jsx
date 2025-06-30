@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Settings.css'; // Ensure you have a CSS file for styling
+import '../styles/Settings.css';
 
 const Settings = () => {
     const [formData, setFormData] = useState({
