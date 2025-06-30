@@ -2,7 +2,7 @@
   max-width: 400px;
   padding: 2rem;
   text-align: center;
-  background: transparent;
+  background: wheat;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 
@@ -25,7 +25,7 @@
   gap: 8px;
 
   padding: 0.75rem 1.5rem;
-  background-color: transparent;
+  background-color: wheat;
   color: black;
   border: none;
   border-radius: 4px;
@@ -33,7 +33,12 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
+.wers {
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  color: #333;
+  background-color: wheat;
+}
 .logout-button:hover {
   background-color: #c82333;
   color: white;

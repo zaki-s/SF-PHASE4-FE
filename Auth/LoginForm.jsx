@@ -45,13 +45,20 @@ const LoginForm = () => {
             alert('❌ Network error. Please check your connection.');
         }
     };
+    const gohome = () => {
+        window.location.href = '/';
+    }
     
     return (
         <div className="register-container">
+            <div className="register-content">
+
+                <div><X className="close-icon" onClick={gohome} /></div>
+
 
             <form className="register-form" onSubmit={handleSubmit}>
-                <div><X className="close-icon" onClick={() => window.history.back()} /></div>
-                <h2>Login </h2>
+
+                <h2 className='swilkj'>Login </h2>
 
                 <label>
                     Email
@@ -62,7 +69,7 @@ const LoginForm = () => {
                     <div className="password-input-wrapper">
                         <input type={showPassword ? 'text' : 'password'}
                             name="password" value={formData.password} onChange={handleChange} required />
-                        <span className="icon" onClick={togglePassword}>
+                        <span className="icon" onClick={togglePassword} >
                             {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                         </span>
                     </div>
@@ -71,14 +78,15 @@ const LoginForm = () => {
                 <button type="submit">Login</button>
                 <p className="switch-link">
                     Do not  have an account?{' '}
-                    <Link to="/register">Register</Link>
+                    <Link to="/register" className='switch-link'>Register</Link>
 
                 </p>
                 <p className="switch-link">
                     {' '}
-                    <Link to="/Logout">Logout ? </Link>                </p>
+                    <Link to="/Logout" className='switch-link'>Logout ? </Link>                </p>
 
             </form>
+            </div>
         </div>
     );
 };
