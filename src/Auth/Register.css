@@ -75,6 +75,7 @@
    
   }
   .password-input-wrapper {
+    color: white;
     position: relative;
     display: flex;
     align-items: center;
@@ -84,6 +85,7 @@
   }
   
   .password-input-wrapper input {
+    color: white;
     border: 1px solid #1F2937;
     width: 100%;
     padding: 0.5rem 2.5rem 0.5rem 0.75rem; 
