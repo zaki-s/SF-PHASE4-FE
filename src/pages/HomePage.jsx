@@ -23,10 +23,19 @@ const HomePage = () => {
     const toggleDropdown = () => {
         setShowDropdown(prev => !prev);
     };
-
+    const logdown = () => {
+        window.location.href = '/logout';
+    };
     const closeDropdown = () => {
         setShowDropdown(false);
     };
+    const Profilfunction = () => {
+        window.location.href = '/profile';
+    };
+    const setbnt = () => {
+        window.location.href = '/settings';
+    };
+
 
     return (
         <div className="Homepage">
@@ -49,17 +58,17 @@ const HomePage = () => {
                                 <p className="username">Anonymous</p>
                             </div>
                             <ul>
-                                <li>
+                                <li onClick={Profilfunction}>
                                     <Link to="/profile" className="dropdown-link" onClick={closeDropdown}>
                                         <img src={profileIcon} alt="Profile Icon" width={10} className="profile-icon" />
                                         My Profile
                                     </Link>
                                 </li>
-                                <li>
+                                <li onClick={setbnt}>
                                     <img src={settingsIcon} alt="Settings Icon" width={10} className="settings-icon" />
                                     Settings
                                 </li>
-                                <li className="logout">
+                                <li className="logout" onClick={logdown}>
                                     <img src={logoutIcon} alt="Logout Icon" width={10} className="logout-icon" />
                                     Logout
                                 </li>

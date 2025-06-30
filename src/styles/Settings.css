@@ -1,0 +1,102 @@
+.settings-container {
+    max-width: 500px;
+    margin: 3rem auto;
+    padding: 2rem;
+    border-radius: 12px;
+    background-color: wheat; /* transparent background */
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+  
+  .settings-container h2 {
+    text-align: center;
+    margin-bottom: 1.8rem;
+    color: #1677ff;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+  
+  .settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    background-color: transparent;
+  }
+  .settings-form label {
+    font-weight: 500;
+    font-size: 0.95rem;
+    background-color: transparent;
+    position: relative;
+    gap: 0.4rem;
+  }
+  
+  .settings-form input[type="text"],
+  .settings-form input[type="email"],
+  .settings-form input[type="password"] {
+    padding: 0.65rem;
+    margin-top: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    color: #333;
+    transition: border 0.3s;
+  }
+  
+  .settings-form input:focus {
+    outline: none;
+    border-color: #1677ff;
+    background-color: transparent;
+    box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.2);
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+    font-size: 0.95rem;
+    color: #333;
+  }
+  
+  .settings-form input[type="checkbox"] {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  
+  .settings-form button {
+    padding: 0.75rem;
+    margin-top: 1rem;
+    background-color: #1677ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .settings-form button:hover {
+    background-color: #145ddb;
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 600px) {
+    .settings-container {
+      margin: 2rem 1rem;
+      padding: 1.5rem;
+    }
+  
+    .settings-container h2 {
+      font-size: 1.4rem;
+    }
+  
+    .settings-form input,
+    .settings-form button {
+      font-size: 0.95rem;
+    }
+  }
+
+  
+ 
