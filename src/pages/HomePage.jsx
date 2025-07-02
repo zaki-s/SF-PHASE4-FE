@@ -6,42 +6,38 @@ import twitterIcon from '../assets/twitter.svg';
 import profileIcon from '../assets/profile.svg';
 import settingsIcon from '../assets/settings.svg';
 import logoutIcon from '../assets/logout.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
+    const navigate = useNavigate();
     const [scrolled, setScrolled] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
+        // Check for an access token in localStorage to determine auth state
+        const token = localStorage.getItem('accessToken');
+        setIsAuthenticated(!!token);
+
         const handleScroll = () => {
             setScrolled(window.scrollY > 10);
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [navigate]); // Rerun when navigation might change auth state
 
     const toggleDropdown = () => {
         setShowDropdown(prev => !prev);
     };
-    const logdown = () => {
-        window.location.href = '/logout';
-    };
     const closeDropdown = () => {
         setShowDropdown(false);
     };
-    const profile = () => {
-        window.location.href = '/profile';
-    };
-    const setbnt = () => {
-        window.location.href = '/settings';
-    };
-
 
     return (
         <div className="Homepage">
             <div className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
-                <h1 className="logo">
-                    <Link to="/" className="logo">SF</Link>
+                <h1 className="logo" onClick={() => navigate('/home')}>
+                    <span className="logo">SF</span>
                 </h1>
                 <div className="navlinks">
                     <ul className="navlist">
@@ -49,30 +45,37 @@ const HomePage = () => {
                         <li><Link to="/progress">My Progress</Link></li>
                     </ul>
                 </div>
-                <div className="profile" onClick={toggleDropdown} onBlur={closeDropdown} tabIndex="0">
-                    <img src={userIcon} alt="User Icon" width={32} className="profileicon" />
-                    {showDropdown && (
-                        <div className="dropdown-menu">
-                            <div className="dropdown-header">
-                                <p className="username">Anonymous</p>
+                {isAuthenticated ? (
+                    <div className="profile" onClick={toggleDropdown} onBlur={closeDropdown} tabIndex="0">
+                        <img src={userIcon} alt="User Icon" width={32} className="profileicon" />
+                        {showDropdown && (
+                            <div className="dropdown-menu">
+                                <div className="dropdown-header">
+                                    <p className="username">Anonymous</p>
+                                </div>
+                                <ul>
+                                    <li onClick={() => navigate('/profile')}>
+                                        <img src={profileIcon} alt="Profile Icon" width={10} className="profile-icon" />
+                                        My Profile
+                                    </li>
+                                    <li onClick={() => navigate('/settings')}>
+                                        <img src={settingsIcon} alt="Settings Icon" width={10} className="settings-icon" />
+                                        Settings
+                                    </li>
+                                    <li className="logout" onClick={() => navigate('/logout')}>
+                                        <img src={logoutIcon} alt="Logout Icon" width={10} className="logout-icon" />
+                                        Logout
+                                    </li>
+                                </ul>
                             </div>
-                            <ul>
-                                <li onClick={profile}>
-                                    <img src={profileIcon} alt="Profile Icon" width={10} className="profile-icon" />
-                                    My Profile
-                                </li>
-                                <li onClick={setbnt}>
-                                    <img src={settingsIcon} alt="Settings Icon" width={10} className="settings-icon" />
-                                    Settings
-                                </li>
-                                <li className="logout" onClick={logdown}>
-                                    <img src={logoutIcon} alt="Logout Icon" width={10} className="logout-icon" />
-                                    Logout
-                                </li>
-                            </ul>
-                        </div>
-                    )}
-                </div>
+                        )}
+                    </div>
+                ) : (
+                    <div className="auth-buttons">
+                        <button className="auth-btn login-btn" onClick={() => navigate('/login')}>Login</button>
+                        <button className="auth-btn register-btn" onClick={() => navigate('/')}>Register</button>
+                    </div>
+                )}
             </div>
 
             <div className="hero">

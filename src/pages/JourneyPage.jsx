@@ -6,9 +6,10 @@ import settingsIcon from '../assets/settings.svg';
 import logoutIcon from '../assets/logout.svg';
 import editIcon from '../assets/edit.svg';
 import deleteIcon from '../assets/delete.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const JourneyPage = () => {
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -131,8 +132,8 @@ const JourneyPage = () => {
   return (
     <div className="Journeypage">
       <div className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
-        <h1 className="logo">
-          <Link to="/" className="logo">SF</Link>
+        <h1 className="logo" onClick={() => navigate('/home')}>
+          <span className="logo">SF</span>
         </h1>
         <div className="navlinks">
           <ul className="navlist">
@@ -146,13 +147,13 @@ const JourneyPage = () => {
             <div className="dropdown-menu">
               <div className="dropdown-header"><p className="username">Anonymous</p></div>
               <ul>
-                <li onClick={() => window.location.href = '/profile'}>
+                <li onClick={() => navigate('/profile')}>
                   <img src={profileIcon} alt="Profile Icon" width={10} /> My Profile
                 </li>
-                <li onClick={() => window.location.href = '/settings'}>
+                <li onClick={() => navigate('/settings')}>
                   <img src={settingsIcon} alt="Settings Icon" width={10} /> Settings
                 </li>
-                <li className="logout" onClick={() => window.location.href = '/logout'}>
+                <li className="logout" onClick={() => navigate('/logout')}>
                   <img src={logoutIcon} alt="Logout Icon" width={10} /> Logout
                 </li>
               </ul>

@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Register.css'; // Assuming you have a CSS file for styling
 
 const LoginForm = () => {
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
+        login: '', // Can be username or email
         password: '',
-        confirmPassword: '',
     });
+    const [success, setSuccess] = useState('');
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-    const togglePassword = () => {
-        setShowPassword(prev => !prev);
-    };
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -22,10 +21,12 @@ const LoginForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData); // still useful for debugging
+        setSuccess('');
+        setError('');
+        setLoading(true);
 
         try {
-            const res = await fetch('http://localhost:5000/login', {
+            const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -36,57 +37,75 @@ const LoginForm = () => {
             const data = await res.json();
 
             if (res.ok) {
-                alert('✅ Login successful');
-                // optionally redirect or store token
+                // Assuming the token is in data.access_token
+                localStorage.setItem('accessToken', data.access_token);
+                setSuccess('✅ Login successful! Redirecting...');
+                setTimeout(() => {
+                    navigate('/home'); // Redirect to the home page
+                }, 1500);
             } else {
-                alert(`❌ ${data.error}`);
+                setError(data.msg || 'Login failed. Please check your credentials.');
             }
-        } catch  {
-            alert('❌ Network error. Please check your connection.');
+        } catch (err) {
+            setError('Network error. Please check your connection.');
+            console.error("Login error:", err);
+        } finally {
+            setLoading(false);
         }
     };
-    const gohome = () => {
-        window.location.href = '/';
-    }
-    
+    const goHome = () => {
+        navigate('/home');
+    };
+
     return (
         <div className="register-container">
-            <div className="register-content">
-
-                <div><X className="close-icon" onClick={gohome} /></div>
-
-
             <form className="register-form" onSubmit={handleSubmit}>
+                <h2 className='resw'>Login</h2>
+                <X className="close-icon" onClick={goHome} />
 
-                <h2 className='swilkj'>Login </h2>
+                {success && <p className="success-message">{success}</p>}
+                {error && <p className="error-message">{error}</p>}
 
                 <label>
-                    Email
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+                    Username or Email
+                    <input
+                        type="text"
+                        name="login"
+                        value={formData.login}
+                        onChange={handleChange}
+                        required
+                        disabled={loading}
+                    />
                 </label>
                 <label>
                     Password
                     <div className="password-input-wrapper">
-                        <input type={showPassword ? 'text' : 'password'}
-                            name="password" value={formData.password} onChange={handleChange} required />
-                        <span className="icon" onClick={togglePassword} >
+                        <input
+                            type={showPassword ? 'text' : 'password'}
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                            disabled={loading}
+                        />
+                        <span className="icon" onClick={() => setShowPassword(p => !p)}>
                             {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                         </span>
                     </div>
                 </label>
 
-                <button type="submit">Login</button>
+                <button type="submit" disabled={loading}>
+                    {loading ? 'Logging in...' : 'Login'}
+                </button>
                 <p className="switch-link">
-                    Do not  have an account?{' '}
-                    <Link to="/register" className='switch-link'>Register</Link>
-
+                    Don't have an account?{' '}
+                    <Link to="/" className='switch-link'>Register</Link>
                 </p>
                 <p className="switch-link">
-                    {' '}
-                    <Link to="/Logout" className='switch-link'>Logout ? </Link>                </p>
-
+                    Forgot Password?{' '}
+                    <Link to="/reset" className='switch-link'>Reset</Link>
+                </p>
             </form>
-            </div>
         </div>
     );
 };

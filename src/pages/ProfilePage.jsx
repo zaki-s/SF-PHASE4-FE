@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/ProfilePage.css';
 import userIcon from '../assets/user.svg';
 import profileIcon from '../assets/profile.svg';
@@ -7,18 +7,46 @@ import settingsIcon from '../assets/settings.svg';
 import logoutIcon from '../assets/logout.svg';
 
 const ProfilePage = () => {
+  const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
-  const [profileData, setProfileData] = useState({
-    name: 'Anonymous',
-    email: 'anonymous@example.com',
-    bio: 'This is your bio. Tell us something cool about you!',
-  });
-
-  const [formData, setFormData] = useState(profileData);
+  // Use 'username' to match the backend model
+  const [formData, setFormData] = useState({ username: '', email: '', bio: '' });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   const [scrolled, setScrolled] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
   useEffect(() => {
+    const fetchProfile = async () => {
+      setLoading(true);
+      setError('');
+      const token = localStorage.getItem('accessToken');
+
+      try {
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/profile`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        if (!res.ok) {
+          throw new Error('Failed to fetch profile data.');
+        }
+
+        const data = await res.json();
+        // Ensure all fields have a value to avoid uncontrolled component warnings
+        setFormData({
+          username: data.username || '',
+          email: data.email || '',
+          bio: data.bio || ''
+        });
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfile();
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
@@ -35,17 +63,37 @@ const ProfilePage = () => {
   };
 
   const handleEditClick = () => {
-    setFormData(profileData);
     setIsEditing(true);
   };
 
   const handleCancel = () => {
     setIsEditing(false);
+    // You might want to refetch data here to discard changes
   };
 
-  const handleSave = () => {
-    setProfileData(formData);
-    setIsEditing(false);
+  const handleSave = async () => {
+    setError('');
+    const token = localStorage.getItem('accessToken');
+
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/profile`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!res.ok) {
+        const errData = await res.json();
+        throw new Error(errData.msg || 'Failed to update profile.');
+      }
+
+      setIsEditing(false);
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   const handleChange = (e) => {
@@ -56,8 +104,8 @@ const ProfilePage = () => {
   return (
     <div className="profile-wrapper">
       <div className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
-        <h1 className="logo">
-          <Link to="/" className="logo">SF</Link>
+        <h1 className="logo" onClick={() => navigate('/home')}>
+          <span className="logo">SF</span>
         </h1>
         <div className="navlinks">
           <ul className="navlist">
@@ -73,15 +121,15 @@ const ProfilePage = () => {
                 <p className="username">Anonymous</p>
               </div>
               <ul>
-                <li onClick={() => window.location.href = '/profile'}>
+                <li onClick={() => navigate('/profile')}>
                   <img src={profileIcon} alt="Profile Icon" width={10} className="profile-icon" />
                   My Profile
                 </li>
-                <li onClick={() => window.location.href = '/settings'}>
+                <li onClick={() => navigate('/settings')}>
                   <img src={settingsIcon} alt="Settings Icon" width={10} className="settings-icon" />
                   Settings
                 </li>
-                <li className="logout" onClick={() => window.location.href = '/logout'}>
+                <li className="logout" onClick={() => navigate('/logout')}>
                   <img src={logoutIcon} alt="Logout Icon" width={10} className="logout-icon" />
                   Logout
                 </li>
@@ -90,6 +138,8 @@ const ProfilePage = () => {
           )}
         </div>
       </div>
+
+      {error && <p className="profile-error">{error}</p>}
 
       <div className="profile-heading">
         <h1>My Profile</h1>
@@ -110,13 +160,13 @@ const ProfilePage = () => {
           <div className="avatar-placeholder">👤</div>
         </div>
 
-        <div className="profile-info">
+        {loading ? <p>Loading profile...</p> : <div className="profile-info">
           <label>
-            Full Name
+            Username
             <input
               type="text"
-              name="name"
-              value={formData.name}
+              name="username"
+              value={formData.username}
               onChange={handleChange}
               disabled={!isEditing}
             />
@@ -145,14 +195,14 @@ const ProfilePage = () => {
           {isEditing && (
             <div className="action-buttons">
               <button className="save-btn" onClick={handleSave}>
-                Save Changes
+                Save
               </button>
               <button className="cancel-btn" onClick={handleCancel}>
                 Cancel
               </button>
             </div>
           )}
-        </div>
+        </div>}
       </div>
     </div>
   );

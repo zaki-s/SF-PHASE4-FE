@@ -4,11 +4,12 @@ import userIcon from '../assets/user.svg';
 import profileIcon from '../assets/profile.svg';
 import settingsIcon from '../assets/settings.svg';
 import logoutIcon from '../assets/logout.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const MyProgress = () => {
   const [scrolled, setScrolled] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,27 +23,15 @@ const MyProgress = () => {
     setShowDropdown(prev => !prev);
   };
 
-  const logdown = () => {
-    window.location.href = '/logout';
-  };
-
   const closeDropdown = () => {
     setShowDropdown(false);
-  };
-
-  const profile = () => {
-    window.location.href = '/profile';
-  };
-
-  const setbnt = () => {
-    window.location.href = '/settings';
   };
 
   return (
     <div className="progresspage">
       <div className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
-        <h1 className="logo">
-          <Link to="/" className="logo">SF</Link>
+        <h1 className="logo" onClick={() => navigate('/home')}>
+          <span className="logo">SF</span>
         </h1>
         <div className="navlinks">
           <ul className="navlist">
@@ -58,15 +47,15 @@ const MyProgress = () => {
                 <p className="username">Anonymous</p>
               </div>
               <ul>
-                <li onClick={profile}>
+                <li onClick={() => navigate('/profile')}>
                   <img src={profileIcon} alt="Profile Icon" width={10} className="profile-icon" />
                   My Profile
                 </li>
-                <li onClick={setbnt}>
+                <li onClick={() => navigate('/settings')}>
                   <img src={settingsIcon} alt="Settings Icon" width={10} className="settings-icon" />
                   Settings
                 </li>
-                <li className="logout" onClick={logdown}>
+                <li className="logout" onClick={() => navigate('/logout')}>
                   <img src={logoutIcon} alt="Logout Icon" width={10} className="logout-icon" />
                   Logout
                 </li>
