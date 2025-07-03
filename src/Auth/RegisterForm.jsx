@@ -40,7 +40,7 @@ const RegisterForm = () => {
             // Destructure to remove confirmPassword before sending to backend
             const { confirmPassword, ...payload } = formData;
 
-            const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/register`, {
+            const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -15,7 +15,7 @@ const Logout = () => {
         if (token) {
             try {
                 // Tell the server to invalidate the token
-                await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/logout`, {
+                await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/logout`, {
                     method: 'DELETE',
                     headers: {
                         'Authorization': `Bearer ${token}`
